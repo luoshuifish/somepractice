@@ -86,6 +86,8 @@
 (define empty-history? null?)
 
 (define most-recent-play car)
+(define most-recent-recent-play cadr)
+
 (define rest-of-plays cdr)
 
 ;; A sampler of strategies
@@ -115,6 +117,26 @@
   (if (empty-history? my-history)
       "c"
       (most-recent-play other-history)))
+
+
+
+(define (EYE-FOR-TWO-EYES my-history other-history)
+    (if (< (length my-history) 2 )
+      "c"
+      (if (or 
+           (string=? "c" (most-recent-play other-history))
+           (string=? "c" (most-recent-recent-play other-history)))
+          "c"
+          "d")))
+
+(define (make-eye-for-n-eyes n)
+  (define (make-eye-for-n-eys-helper my-history other-history n)
+    (if (and (empty-history? my-history) (< n 0))
+        "c"
+        
+        
+  
+  
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
