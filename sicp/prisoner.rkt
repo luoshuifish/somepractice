@@ -121,18 +121,19 @@
 
 
 (define (EYE-FOR-TWO-EYES my-history other-history)
-    (if (< (length my-history) 2 )
-      "c"
-      (if (or 
-           (string=? "c" (most-recent-play other-history))
-           (string=? "c" (most-recent-recent-play other-history)))
-          "c"
-          "d")))
+  ((make-eye-for-n-eyes 2) my-history other-history))
 
 (define (make-eye-for-n-eyes n)
-  (define (make-eye-for-n-eys-helper my-history other-history n)
-    (if (and (empty-history? my-history) (< n 0))
+  (define (test other-history n)
+    (cond ((or (empty-history? other-history) (<= n 0)) false)
+          ( (and (> n 0) (string=? "c" (car other-history))) true)
+          (else (test (cdr other-history) (- n 1)))
+        ))
+  (lambda (my-history other-history)
+    (if (test other-history n)
         "c"
+        "d")))
+    
         
         
   
