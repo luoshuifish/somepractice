@@ -137,7 +137,7 @@
 
 ;;这里如何构造一个封闭的自加的
 
-
+(define COUNT 1)
 
 (define (make-rotating-strategy strat0 strat1 freq0 freq1)
   (let [(rem (remainder  COUNT (+ freq0 freq1)))
@@ -146,11 +146,8 @@
     (if (and (<= rem freq0) (> rem 0))
         strat0
         strat1)))
-(define (add-time  freq0 freq1)
-  (define COUNT 1)
-  (
-  
-  
+
+ 
     
         
         
