@@ -17,6 +17,10 @@ void StackInit(SeqStack* st){
 	st->top = 0;
 }
 
+int StackIsEmpty(SeqStack* st){
+	return st->top == 0;
+}
+
 int StackIsFull(SeqStack* st){
 	return st->top == MAX_SIZE;
 }
@@ -29,12 +33,10 @@ void StackPush(SeqStack* st, DataType data){
 		st->stack[st->top] = data;
 		st->top  += 1 ;
 	}
-	
 }
 
 DataType StackPop(SeqStack* st){
-	st->top -= 1;
-	return st->stack[st->top ];
+	return StackIsEmpty(st)? printf("wrong\n"):st->stack[st->top - 1 ];
 }
 
 int main(){
@@ -51,6 +53,8 @@ int main(){
 		StackPop(seqS);
 	}
 	printf("%d",seqS->top);
+
+	free(seqS);
 
 	return 0;
 
