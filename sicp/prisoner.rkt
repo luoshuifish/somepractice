@@ -152,6 +152,9 @@
     (set! COUNT (+ COUNT 1))
     (list-ref list-strategies rem)))
 
+
+
+
  
     
         
